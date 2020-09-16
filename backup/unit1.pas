@@ -44,22 +44,40 @@ procedure TSettingForm.FormCreate(Sender: TObject);
 var
   CounterVar: integer;
 begin
-  listNetProcess := TProcess.Create(nil);
-  listNetProcess.Executable := '/bin/sh';
-  listNetProcess.Parameters.Add('-c');
-  listNetProcess.Parameters.Add('ls /sys/class/net/');
-  listNetProcess.Options := listNetProcess.Options + [poWaitOnExit, poUsePipes];
-  listNetProcess.Execute;
-  nets := TStringList.Create;
-  nets.LoadFromStream(listNetProcess.Output);
-  listNetProcess.Free;
-  netsUpCommnd := '';
-  netsDownCommnd := '';
-  for CounterVar := 0 to Pred(nets.Count) do
-  begin
-    netsUpCommnd += 'sudo ifconfig ' + nets[CounterVar] + ' up;';
-    netsDownCommnd += 'sudo ifconfig ' + nets[CounterVar] + ' down;';
-  end;
+  //listNetProcess := TProcess.Create(nil);
+  //listNetProcess.Executable := '/bin/sh';
+  //listNetProcess.Parameters.Add('-c');
+  //listNetProcess.Parameters.Add('ls /sys/class/net/');
+  //listNetProcess.Options := listNetProcess.Options + [poWaitOnExit, poUsePipes];
+  //listNetProcess.Execute;
+  //nets := TStringList.Create;
+  //nets.LoadFromStream(listNetProcess.Output);
+  //listNetProcess.Free;
+  //netsUpCommnd := '';
+  //netsDownCommnd := '';
+  //for CounterVar := 0 to Pred(nets.Count) do
+  //begin
+  //  netsUpCommnd += 'sudo ifconfig ' + nets[CounterVar] + ' up;';
+  //  netsDownCommnd += 'sudo ifconfig ' + nets[CounterVar] + ' down;';
+  //end;
+  netsUpCommnd := 'sudo iptables -A OUTPUT -p tcp  -d rescdn.qqmail.com  -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d mail.putixin.com  -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d putixin.com  -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d www.putixin.com  -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d hm.baidu.com  -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d open.weixin.qq.com -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d res.wx.qq.com -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d tajs.qq.com -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d lp.open.weixin.qq.com -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -d pingtcss.qq.com -j ACCEPT;' +
+         'sudo iptables -A OUTPUT -p tcp  -j DROP;';
+  netsDownCommnd := 'sudo iptables -P INPUT ACCEPT;' +
+            'sudo iptables -P FORWARD ACCEPT;' +
+            'sudo iptables -P OUTPUT ACCEPT;' +
+            'sudo iptables -t nat -F;' +
+            'sudo iptables -t mangle -F;' +
+            'sudo iptables -F;' +
+            'sudo iptables -X;';
 end;
 
 procedure TSettingForm.Button1Click(Sender: TObject);
@@ -119,7 +137,7 @@ var
   AChangePasswordForm: TChangePasswordForm;
 begin
   AChangePasswordForm:=TChangePasswordForm.Create(Self);
-  AChangePasswordForm.Show;
+  AChangePasswordForm.ShowModal;
 
 end;
 

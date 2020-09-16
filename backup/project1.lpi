@@ -122,6 +122,7 @@
         <Filename Value="changepassword.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ChangePasswordForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit3>
     </Units>

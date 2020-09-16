@@ -55,7 +55,7 @@ begin
 
   if Trim(Edit1.Text) = Trim(Password.Text) then
   begin
-    if trim(Edit2.Text) <> '' and trim(Edit2.Text) = trim(Edit3.Text) then
+    if (trim(Edit2.Text) <> '') and (trim(Edit2.Text) = trim(Edit3.Text)) then
     begin
      ShowMessage('Success!');
      Password.Text:= trim(Edit2.Text);
