@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1548372422"/>
+  <Params Value=" -MObjFPC -Scaghi -Cg -CirotR -O1 -gw2 -godwarfsets -gl -gh -Xg -gt -l -vewnhibq -Fi/home/myfath/network-control/lib/x86_64-linux -Fu/usr/lib/lazarus/2.0.0/lcl/units/x86_64-linux/gtk2 -Fu/usr/lib/lazarus/2.0.0/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/2.0.0/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/2.0.0/packager/units/x86_64-linux -Fu/home/myfath/network-control/ -FU/home/myfath/network-control/lib/x86_64-linux/ -FE/home/myfath/network-control/ -o/home/myfath/network-control/project1 -dLCL -dLCLgtk2 project1.lpr"/>
+</CONFIG>

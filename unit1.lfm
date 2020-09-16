@@ -1,0 +1,38 @@
+object SettingForm: TSettingForm
+  Left = 449
+  Height = 240
+  Top = 272
+  Width = 320
+  BorderStyle = bsDialog
+  ClientHeight = 240
+  ClientWidth = 320
+  OnCreate = FormCreate
+  LCLVersion = '2.0.0.4'
+  object Button1: TButton
+    Left = 56
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = '开启'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 191
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = '关闭'
+    OnClick = Button2Click
+    TabOrder = 1
+  end
+  object ChangePasswordButton: TButton
+    Left = 120
+    Height = 25
+    Top = 152
+    Width = 75
+    Caption = '修改密码'
+    OnClick = ChangePasswordButtonClick
+    TabOrder = 2
+  end
+end
